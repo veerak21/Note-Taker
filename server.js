@@ -14,16 +14,16 @@ app.get('/api/notes', (rew,res) =>
  res.json(allNotes.slice(1))
 );
 
- app.get('./',(req,res) =>
+ app.get('./', (req,res) =>
  res.sendFile(path.join(__dirname, '/public/index.html'))
  );
 
- app.get('/notes',(req,res)=>
+ app.get('/notes', (req,res)=>
  res.sendFile(path.join(__dirname,'/public/notes.html'))
  );
 
  app.get('*', (req,res) =>
- res.sendFile(path.json(__dirname,'/public/index.html'))
+ res.sendFile(path.join(__dirname,'/public/index.html'))
  );
 
  function addNewNote(body, notesArray){
@@ -52,7 +52,7 @@ app.get('/api/notes', (rew,res) =>
 
       if(note.id == id){
          notesArray.splice(i, 1);
-         fs.appendFileSync(path.json(__dirname, './db/db.json'),
+         fs.appendFileSync(path.join(__dirname, './db/db.json'),
           JSON.stringify(notesArray, null, 2));
           break;
       }
